@@ -1,0 +1,53 @@
+# 技術スタック
+## バックエンド
+- パラダイム
+  - fp-ts
+    - 純粋関数型プログラミングのパラダイムをTypeScriptに導入するライブラリ
+    - https://github.com/gcanti/fp-ts
+    - https://gcanti.github.io/fp-ts/
+- GraphQLサーバー
+  - Apollo　Server
+    - https://github.com/apollographql/apollo-server
+    - https://www.apollographql.com/docs/apollo-server/
+  - type-graphql
+    - GraphQLのスキーマ定義とリゾルバー実装を簡素かつ型安全に行えるようにするライブラリ
+    - https://github.com/MichalLytek/type-graphql
+- RDBアクセス
+  - Prisma ORM
+    - https://github.com/prisma/prisma
+    - https://www.prisma.io/docs/orm
+- DynamoDBアクセス
+  - event-store-adapter-js
+    - DynamoDBをCQRS/ESのイベントストアとして扱うのを簡易にするライブラリ
+    - 実際にアクセスするためにはDynamoDBClientを渡す必要がある
+    - https://github.com/j5ik2o/event-store-adapter-js
+- その他
+  - ULID
+    - 順序性がある UUID 互換のフォーマット
+    - ID 発行時の ID フォーマットとして利用
+    - https://github.com/perry-mitchell/ulidx
+
+## フロントエンド
+- View
+  - React
+    - https://ja.react.dev/
+  - Styled Components
+    - https://styled-components.com/
+- GraphQLクライアント
+  - Apollo Client
+    - https://www.apollographql.com/docs/react/
+  - graphql-codegen
+    - GraphQLのQueryやMutationをTypeScriptの型定義に変換するツール
+    - https://the-guild.dev/graphql/codegen
+  - graphql
+    - https://graphql.org/
+- テスト関連
+  - TestはStorybookとmswを組み合わせたIntegration Testで構成されています
+    - Storybook
+      - https://storybook.js.org/
+    - vitest
+      - https://vitest.dev/
+    - msw(テスト時のモックに使用)
+      - https://mswjs.io/
+    - React Testing Library
+      - https://testing-library.com/

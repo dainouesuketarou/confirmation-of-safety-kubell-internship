@@ -1,0 +1,7 @@
+packages:
+  - 'packages/backend/bootstrap'
+  - 'packages/backend/infrastructure'
+  - 'packages/backend/rmu'
+  - 'packages/backend/command/*'
+  - 'packages/backend/query/*'
+  - 'packages/frontend'

@@ -1,0 +1,48 @@
+@startuml system-layout
+'https://plantuml.com/component-diagram
+
+node "Client" as client {
+}
+
+node "Write API Server\n(HTTP/Web API)" as writeAPI {
+    [Group Chat Aggregate] as groupChatAggregate
+}
+
+node "Read API Server\n(GraphQL Server)" as readAPI {
+    [Query] as query
+}
+
+node "Read Model Updater" as updater {
+}
+
+database "DynamoDB" {
+    [Journal(Events)] as journal
+    [Snapshot] as snapshot
+}
+
+database "RDB" {
+  [Group Chat Read Model] as groupChat
+  [Member Read Model] as member
+}
+
+journal -[hidden]- snapshot
+groupChat -[hidden]- member
+
+writeAPI -d-> groupChatAggregate
+
+groupChatAggregate -d-> journal: Put Item
+groupChatAggregate -d-> snapshot: Put/Update Item
+
+journal -r-> updater: DynamoDB\nStreams
+
+updater -r-> groupChat: SQL Insert/Update/Delete
+updater -r-> member: SQL Insert/Update/Delete
+
+groupChat --> query: SQL Select
+member --> query: SQL Select
+query -> readAPI
+
+client -d-> writeAPI
+client <-r- readAPI
+
+@enduml

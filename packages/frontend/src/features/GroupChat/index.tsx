@@ -1,0 +1,1 @@
+export { GroupChatContainer } from "./GroupChatContainer";

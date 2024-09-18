@@ -1,0 +1,22 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "docker:build-backend": {
+      "dependsOn": ["^docker:build-backend"],
+      "outputs": ["dist/**"]
+    },
+    "test": {
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"],
+      "env": ["TEST_TIME_FACTOR"]
+    },
+    "lint:prettier": {},
+    "lint:eslint": {},
+    "fix:prettier": {},
+    "fix:eslint": {},
+    "clean": {},
+    "clean-package": {
+      "cache": false
+    },
+    "generate:backend": {}
+  }
+}

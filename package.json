@@ -1,0 +1,52 @@
+{
+  "name": "cqrs-es-example-js",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "-----コード生成関連-----": "",
+    "generate:all": "pnpm generate:backend && pnpm generate:frontend",
+    "generate:backend": "turbo generate:backend",
+    "generate:frontend": "pnpm --filter ./packages/frontend/ generate:frontend:all",
+    "-----docker関連-----": "",
+    "docker:build-e2e-test": "cd tools/e2e-test && make build",
+    "docker:build": "docker build -t cqrs-es-example-js .",
+    "docker:compose-e2e-test": "./tools/scripts/docker-compose-e2e-test.sh",
+    "docker:compose-up": "./tools/scripts/docker-compose-up.sh",
+    "docker:compose-up-db": "./tools/scripts/docker-compose-up.sh -d",
+    "docker:compose-down": "./tools/scripts/docker-compose-down.sh",
+    "docker:build-backend": "turbo docker:build-backend",
+    "-----E2Eテスト関連-----": "",
+    "e2e:create-group-chat": "./tools/scripts/curl-create-group-chat.sh",
+    "e2e:get-group-chats": "./tools/scripts/curl-get-group-chats.sh",
+    "e2e:verify-group-chat": "./tools/e2e-test/verify-group-chat.sh",
+    "-----開発時に使用する関連-----": "",
+    "start:all": "pnpm start:backend:all & pnpm start:frontend",
+    "start:frontend": "pnpm --filter ./packages/frontend/ run start",
+    "start:backend:all": "pnpm --filter ./packages/backend/bootstrap/ run start:all",
+    "start:backend:write-api": "pnpm --filter ./packages/backend/bootstrap/ run start:write-api",
+    "start:backend:read-api": "pnpm --filter ./packages/backend/bootstrap/ run start:read-api",
+    "start:backend:local-rmu": "pnpm --filter ./packages/backend/bootstrap/ run start:local-rmu",
+    "test": "turbo test",
+    "fix:eslint": "turbo fix:eslint",
+    "fix:prettier": "turbo fix:prettier",
+    "lint:eslint": "turbo lint:eslint",
+    "lint:prettier": "turbo lint:prettier",
+    "clean": "turbo clean",
+    "clean-package": "turbo clean-package"
+  },
+  "keywords": [],
+  "author": "Junichi Kato <j5ik2o@gmail.com> (https://j5ik2o.me/)",
+  "license": "(MIT OR Apache-2.0)",
+  "engines": {
+    "node": ">=20.5.0",
+    "pnpm": ">=8",
+    "npm": "please-use-pnpm",
+    "yarn": "please-use-pnpm"
+  },
+  "packageManager": "pnpm@8.15.8",
+  "devDependencies": {
+    "turbo": "^2.0.12"
+  }
+}
